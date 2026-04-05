@@ -20,6 +20,7 @@ def build_pipeline(num_attribs, cat_attribs):
     # For numerical columns
     num_pipline = Pipeline([
         ("imputer", SimpleImputer(strategy="median")),
+        
         ("scaler", StandardScaler())
     ])
 
@@ -50,7 +51,10 @@ if not os.path.exists(MODEL_FILE):
     split = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
 
     for train_index, test_index in split.split(housing, housing['income_cat']):
+        housing.loc[test_index].drop("income_cat", axis=1).to_csv("input.csv", index=False)
         housing= housing.loc[train_index].drop("income_cat", axis=1) 
+    
+        
     
 
     # 3. Seperate features and labels
@@ -67,11 +71,30 @@ if not os.path.exists(MODEL_FILE):
     housing_prepared = pipeline.fit_transform(housing_features) 
    
     ##train model 
+    print("training model please wait....")
     model = RandomForestRegressor (random_state=42)  
     model.fit(housing_prepared, housing_labels) 
 
 
     joblib.dump(model, MODEL_FILE)
     joblib.dump(pipeline, PIPELINE_FILE)
+
+    print("MODEL trained successfully Congrats ")
+
+else:
+    ##lets do inference 
+    model = joblib.load(MODEL_FILE)
+    pipeline = joblib.load(PIPELINE_FILE)
+
+    input_data = pd.read_csv('input.csv') 
+    transformed_input= pipeline.transform(input_data) 
+
+    predictions=model.predict(transformed_input) 
+    input_data['median_house_value'] = predictions 
+    input_data.to_csv("output.csv", index=False) 
+    print("Inference is complete, result saved to output.csv file..!")
+
+
+
 
 
