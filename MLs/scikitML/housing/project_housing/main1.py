@@ -92,7 +92,7 @@ else:
     predictions=model.predict(transformed_input) 
     input_data['median_house_value'] = predictions 
     input_data.to_csv("output.csv", index=False) 
-    print("Inference is complete, result saved to output.csv file..!")
+    print("Inference is complete, result saved to output.csv file..!") 
 
 
 
