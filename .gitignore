@@ -1,0 +1,14 @@
+# Jupyter junk
+.ipynb_checkpoints/
+.virtual_documents/
+
+# Python cache
+__pycache__/
+*.pyc
+
+
+##sitepackages 
+conda/LP1/books
+# OS junk
+Thumbs.db
+.DS_Store

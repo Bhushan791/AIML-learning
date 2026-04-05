@@ -1,0 +1,15 @@
+STEPS TO MODEL A PROBLEM AS A ML PROBLEM
+
+
+> Look at the bigger picture
+> Get the data
+> explore and visualise the data
+> prepare the data
+> select a model and train it 
+> Fine tune your model
+> present and launch your model
+
+
+
+
+###ERRROS IN ML   [MEASURING ERRORS : RMSE AND MAE]
