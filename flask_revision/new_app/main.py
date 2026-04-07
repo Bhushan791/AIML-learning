@@ -10,4 +10,7 @@ def home_page() :
     numbers  =   [ 1,2,4,56,123]
     return render_template("index.html", name = name, numbers =numbers)
 
+@app.route("/about")
+def about_page(): 
+    return render_template("about.html") 
 app.run(debug=True)

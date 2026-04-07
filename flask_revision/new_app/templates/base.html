@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title  %} {% endblock  %} -my webpage</title>
+</head>
+<body>
+
+<nav>This is my nav bar 
+
+<div> 
+<a href="hey.com">first</a>
+</div>
+</nav>
+  <div id ="content">{% block content %} {% endblock %} </div> 
+
+  <div id= "footer"> 
+   
+   {% block footer %}  
+   
+   &copy; Copyright 2026 by <a href="http://devbhushanbhatta.com.np">You</a>
+    {% endblock %}
+   </div>  
+</body>
+</html>
